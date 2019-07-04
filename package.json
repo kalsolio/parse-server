@@ -36,7 +36,8 @@
     "node-gcm": "^0.14.0",
     "parse": "^1.7.0",
     "request": "^2.65.0",
-    "winston": "^2.1.1"
+    "winston": "^2.1.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -63,12 +64,14 @@
     "posttest": "./node_modules/.bin/mongodb-runner stop",
     "coverage": "cross-env COVERAGE_OPTION='./node_modules/babel-istanbul/lib/cli.js cover -x **/spec/**' npm test",
     "start": "node ./bin/parse-server",
-    "prepublish": "npm run build"
+    "prepublish": "npm run snyk-protect; npm run build",
+    "snyk-protect": "snyk protect"
   },
   "engines": {
     "node": ">=4.3"
   },
   "bin": {
     "parse-server": "./bin/parse-server"
-  }
+  },
+  "snyk": true
 }
